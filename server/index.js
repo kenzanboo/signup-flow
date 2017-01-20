@@ -113,6 +113,14 @@ export const createServer = (config) => {
             <!DOCTYPE html>
             <html lang="en">
               <head>
+                <!-- Compiled and minified CSS -->
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+                <!-- Compiled and minified JavaScript -->
+                <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+
                 <meta charSet="utf-8">
                 <meta httpEquiv="X-UA-Compatible" content="IE=edge">
                 ${head.title.toString()}

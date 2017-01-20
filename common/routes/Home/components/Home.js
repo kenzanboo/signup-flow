@@ -1,72 +1,98 @@
 import React from 'react'
+import { Control, Form } from 'react-redux-form'
+import { browserHistory } from 'react-router';
 
-import { StyleSheet, css } from 'aphrodite'
-import data from '../data'
+// TODO use inline styles if we wanted to do more indepth styling
+//import { StyleSheet, css } from 'aphrodite'
+
+// TODO implement birth date validation
+// const emailPattern='/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'
+// const phonePattern = '^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$'
+// date is only a rough estimate of older than 18
+// const datePattern = '^(19[1-9][1-9]\s*|\d{3,})$'
 
 // This is a static page. It uses an array to hold data about the resources
 // and maintain DRY
-const Home = (props) => (
-  <div>
+const handleSubmit = (val) => {
+  console.log('Saved Form data', val) // this would normally save to server if we had a server
+  browserHistory.push('/DentalHistory');
+}
 
-    <h2 className={css(styles.header)}>About</h2>
-    <p className={css(styles.lead)}>
-      This is an example react application (master-detail feed) with isomorphic rendering, async react-router routes, async redux reducers, async data fetching, and code-splitting.
-    </p>
-    <h2 className={css(styles.header)}>Motivation</h2>
-    <p className={css(styles.lead)}>
-      The file size of isomorphic React apps can quickly get out of hand. Many isomorphic starter kits look awesome to begin with but yield a several megabyte javascript
-      file for the client to download. This project aims to demonstrate some possible solutions.
-    </p>
-    <h2 className={css(styles.header)}>Under the Hood</h2>
-    <ul className={css(styles.list)}>
-      {data.map((item, i) => (
-        <li key={i}>
-          <h3><a className={css(styles.link)} href={item.link} target='_blank'>{item.resource}</a></h3>
-          <p className={css(styles.body)}>{item.description}</p>
-        </li>
-       ))}
-    </ul>
-  </div>
-)
+const inputClass = 'input-field col s12 m6'
+const Home = (props) => {
+  return (
+    <div className="row">
+      <h5>Get started today with your new smile!</h5>
+      <Form className="col s12" model='user' onSubmit={(val) => handleSubmit(val)}>
+        <div className={inputClass}>
+          <Control.text
+            id='firstName'
+            model='.firstName'
+            className='validate'
+            pattern='^[a-zA-Z0-9]*$'
+            required
+          />
+          <label htmlFor='firstName'>First Name</label>
+        </div>
+        <div className={inputClass}>
+          <Control.text
+            id='lastName'
+            model='.lastName'
+            className='validate'
+            pattern='^[a-zA-Z0-9]*$'
+            required
+          />
+          <label htmlFor='lastName'>Last Name</label>
+        </div>
+        <div className={inputClass}>
+          <Control.text
+            id='phoneNumber'
+            model='.phoneNumber'
+            className='validate'
+            pattern='^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$'
+            required
+          />
+          <label htmlFor='phoneNumber' data-error="123-456-7890">Phone Number</label>
+        </div>
+        <div className={inputClass}>
+          <Control
+            id='dateOfBirth'
+            type='date'
+            model='.dateOfBirth'
+            className='validate'
+            required
+          />
+          <label htmlFor='dateOfBirth' className='active'>Date Of Birth (18 & older)</label>
+        </div>
+        <div className={inputClass}>
+          <Control
+            id='email'
+            type='email'
+            model='.email'
+            className='validate'
+            required
+          />
+          <label htmlFor='email' data-error='Oops, please put in your email'>Email</label>
+        </div>
+        <div className={inputClass}>
+          <Control
+            id='password'
+            type='password'
+            model='.password'
+            className='validate'
+            title='Password Must be contain at least 8 characters, least 1 number and both lower and uppercase letters'
+            pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,100}$'
+            required
+          />
+          <label htmlFor='password' data-error='Password Must be contain at least 8 characters, least 1 number and both lower and uppercase letters'>Password</label>
+        </div>
+        <div>
+          <button type='submit' className='float-right btn waves-effect waves-light'>Create Account</button>
+        </div>
+      </Form>
+    </div>
+  )
+}
 
-const styles = StyleSheet.create({
-  header: {
-    fontSize: 28,
-    lineHeight: '1.2',
-    margin: '0 0 1.5rem'
-  },
-  lead: {
-    fontSize: 18,
-    lineHeight: '1.5',
-    margin: '0 0 1.5rem',
-    color: '#555'
-  },
-  body: {
-    fontSize: '1rem',
-    lineHeight: '1.5',
-    margin: '0 0 1.5rem',
-    color: '#555'
-  },
-  list: {
-    fontSize: '1rem',
-    listStyle: 'none',
-    padding: 0
-  },
-  link: {
-    display: 'block',
-    fontSize: '1.25rem',
-    margin: '0 0 .5rem',
-    lineHeight: '1.5',
-    fontWeight: 'bold',
-    color: '#08c',
-    opacity: 1,
-    transition: '.2s opacity ease',
-    textDecoration: 'none',
-    ':hover': {
-      opacity: 0.5,
-      textDecoration: 'none'
-    }
-  }
-})
 
 export default Home
