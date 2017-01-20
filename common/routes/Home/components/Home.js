@@ -87,7 +87,7 @@ const Home = (props) => {
           <label htmlFor='password' data-error='Password Must be contain at least 8 characters, least 1 number and both lower and uppercase letters'>Password</label>
         </div>
         <div>
-          <button type='submit' className='float-right btn waves-effect waves-light'>Create Account</button>
+          <button type='submit' className='mt-5 float-right btn waves-effect waves-light'>Create Account</button>
         </div>
       </Form>
     </div>
