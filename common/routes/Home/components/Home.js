@@ -81,7 +81,7 @@ const Home = (props) => {
             model='.password'
             className='validate'
             title='Password Must be contain at least 8 characters, least 1 number and both lower and uppercase letters'
-            pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,100}$'
+            pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,100}$'
             required
           />
           <label htmlFor='password' data-error='Password Must be contain at least 8 characters, least 1 number and both lower and uppercase letters'>Password</label>
