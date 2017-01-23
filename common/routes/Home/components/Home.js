@@ -23,6 +23,10 @@ const Home = (props) => {
   return (
     <div className="row">
       <h5>Get started today with your new smile!</h5>
+      <div className="progress">
+        <div className="determinate" style="width: 70%"></div>
+      </div>
+
       <Form className="col s12" model='user' onSubmit={(val) => handleSubmit(val)}>
         <div className={inputClass}>
           <Control.text
@@ -80,7 +84,7 @@ const Home = (props) => {
             type='password'
             model='.password'
             className='validate'
-            title='Password Must be contain at least 8 characters, least 1 number and both lower and uppercase letters'
+            title='Password must contain at least 8 characters, least 1 number and both lower and uppercase letters'
             pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,100}$'
             required
           />

@@ -15,7 +15,12 @@ const DentalHistory = (props) => (
       {questions.map((question, index) => (
         <div key={index}>
           <div>{question}</div>
-          <Control.select required className='browser-default' model={`.dentalHistoryQuestions[${question}]`}>
+          <Control.select
+            required
+            className='browser-default'
+            model={`.dentalHistoryQuestions[${question}]`}
+            id={index}
+          >
             <option value="">-</option>
             <option value="Yes">Yes</option>
             <option value="No">No</option>
