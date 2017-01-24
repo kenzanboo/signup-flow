@@ -7,17 +7,7 @@ const initialState = {
 }
 
 const sourceRequest = (state = initialState, action) => state
-/*
 
- const initialUser = {
- firstName: '',
- lastName: '',
- email: '',
- password: '',
- dateOfBirth: '',
- phoneNumber: ''
- }
- */
 const initialUser = {
   firstName: '',
   lastName: '',
@@ -30,19 +20,24 @@ const initialUser = {
   selectedDoctor: '',
   insuranceProvider: ''
 }
+const initialConnectedUser = {
+  email: '',
+  password: ''
+}
 
 // Only combine reducers needed for initial render, others will be
 // added async
 export default function createReducer (asyncReducers) {
-  return combineForms({
-    user: initialUser
-  });
+  //return combineForms({
+  //  user: initialUser
+  //});
 
-  // return combineReducers({
-  //  form: combineForms({
-  //    user: initialUser
-  //  }),
-  //  sourceRequest,
-  //  ...asyncReducers
-  //})
+   return combineReducers({
+   deep: combineForms({
+     user: initialUser,
+     connectedUser: initialConnectedUser
+   }, 'deep'),
+    sourceRequest,
+    ...asyncReducers
+  })
 }

@@ -11,7 +11,10 @@ const handleSubmit = (val) => {
 const DentalHistory = (props) => (
   <div className="row">
     <h5 className="m-1">Please select an image for any of the following that apply.</h5>
-    <Form className="col s12" model='user' onSubmit={(val) => handleSubmit(val)}>
+    <div className="progress">
+      <div className="determinate" style={{width: '55%'}}></div>
+    </div>
+    <Form className="col s12" model='deep.user' onSubmit={(val) => handleSubmit(val)}>
       {questions.map((question, index) => (
         <div className="m-3 clearfix" key={index}>
           <div>Select an image for "{question}"</div>

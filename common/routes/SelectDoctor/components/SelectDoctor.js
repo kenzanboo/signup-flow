@@ -12,7 +12,10 @@ const handleSubmit = (val) => {
 const SelectDoctor = (props) => (
   <div className="row">
     <h5 style={style.header} className="m-1">Please select your doctor:</h5>
-    <Form className="col s12" model='user' onSubmit={(val) => handleSubmit(val)}>
+    <div className="progress">
+      <div className="determinate" style={{width: '75%'}}></div>
+    </div>
+    <Form className="col s12" model='deep.user' onSubmit={(val) => handleSubmit(val)}>
       <Field required model=".selectedDoctor" className="field">
         {images.map((image, index) => (
           <p className="col s12 m4" key={index}>

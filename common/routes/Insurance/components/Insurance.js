@@ -12,7 +12,10 @@ const handleSubmit = (val) => {
 const DentalHistory = (props) => (
   <div className="row">
     <h5 className="m-1">Last Question. Please select your insurance if you have one.</h5>
-    <Form className="col s12" model='user' onSubmit={(val) => handleSubmit(val)}>
+    <div className="progress">
+      <div className="determinate" style={{width: '90%'}}></div>
+    </div>
+    <Form className="col s12" model='deep.user' onSubmit={(val) => handleSubmit(val)}>
           <div>Insurance:</div>
           <Control.select required className='browser-default' model='.insuranceProvider'>
             {insuranceList.map((insurance, index) => (

@@ -11,7 +11,10 @@ const handleSubmit = (val) => {
 const DentalHistory = (props) => (
   <div className="row">
     <h5 className="m-1">Just a few more questions about you and you'll be on your way.</h5>
-    <Form className="col s12" model='user' onSubmit={(val) => handleSubmit(val)}>
+    <div className="progress">
+      <div className="determinate" style={{width: '45%'}}></div>
+    </div>
+    <Form className="col s12" model='deep.user' onSubmit={(val) => handleSubmit(val)}>
       {questions.map((question, index) => (
         <div key={index}>
           <div>{question}</div>

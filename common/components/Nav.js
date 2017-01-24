@@ -6,8 +6,10 @@ import { StyleSheet, css } from 'aphrodite'
 const Nav = () => (
   <div>
     <IndexLink to='/' className={css(styles.link)} activeClassName={css(styles.link, styles.activeLink)}>
-      Home
+      Sign Up
     </IndexLink>
+    <Link to='/SignIn' className={css(styles.link)} activeClassName={css(styles.link, styles.activeLink)}>Sign In
+    </Link>
     <a href='https://angel.co/cvstom' className={css(styles.link)} target='_blank'>About Us</a>
   </div>
 )

@@ -9,6 +9,10 @@ const handleSubmit = (val) => {
 const DentalHistory = (props) => (
   <div className="row">
     <h5 className="m-1">Congrats! You're done. </h5>
+
+    <div className="progress">
+      <div className="determinate" style={{width: '100%'}}></div>
+    </div>
     <a href="http://github.com/kenzanboo">Head Over to Github to look at the code for this sample project</a>
   </div>
 )

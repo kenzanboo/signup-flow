@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'react-router/lib/Link'
 import { Control, Form } from 'react-redux-form'
 import { browserHistory } from 'react-router';
 
@@ -24,10 +25,10 @@ const Home = (props) => {
     <div className="row">
       <h5>Get started today with your new smile!</h5>
       <div className="progress">
-        <div className="determinate" style="width: 70%"></div>
+        <div className="determinate" style={{width: '25%'}}></div>
       </div>
 
-      <Form className="col s12" model='user' onSubmit={(val) => handleSubmit(val)}>
+      <Form className="col s12" model='deep.user' onSubmit={(val) => handleSubmit(val)}>
         <div className={inputClass}>
           <Control.text
             id='firstName'
@@ -91,6 +92,7 @@ const Home = (props) => {
           <label htmlFor='password' data-error='Password Must be contain at least 8 characters, least 1 number and both lower and uppercase letters'>Password</label>
         </div>
         <div>
+          <Link to='/SignIn' style={{marginTop: 48, display: 'inline-block'}}>Already have an account?</Link>
           <button type='submit' className='mt-5 float-right btn waves-effect waves-light'>Create Account</button>
         </div>
       </Form>
